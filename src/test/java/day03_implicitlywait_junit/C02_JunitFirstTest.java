@@ -24,7 +24,8 @@ public class C02_JunitFirstTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.get("https://facebook.com");
-        driver.close();    }
+        driver.close();
+    }
 
 
 }
