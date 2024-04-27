@@ -30,7 +30,7 @@ public class C02_RelativeLocators {
         //https://www.diemol.com/selenium-4-demo/relative-locators-demo.html adresine gidin
         driver.get("https://www.diemol.com/selenium-4-demo/relative-locators-demo.html");
 
-        //Berlin'i relative locator ile locate edin
+        //Berlin'i relativ_e locator ile locate edin
        WebElement nyc=  driver.findElement(By.id("pid3_thumb"));
        WebElement byArea=driver.findElement(By.id("pid8_thumb"));
        WebElement berlin=  driver.findElement( with(By.tagName("img")).below(nyc).toLeftOf(byArea) );

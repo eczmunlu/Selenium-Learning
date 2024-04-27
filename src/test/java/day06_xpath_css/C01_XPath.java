@@ -57,6 +57,6 @@ public class C01_XPath {
         driver.findElement(By.xpath("(//h2)[1]/a")).click();
 
         //close the page
-        driver.quit();
+         driver.quit();
     }
 }

@@ -1,9 +1,6 @@
 package day07_css_relativelocators_dropdown;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,6 +30,8 @@ public class C03_DropDownMenu {
 
     4-getOptions() -> Locate ettigimiz dropdown menudeki tum secenekleri verir.---List<WebElement> e atariz
     5-getFirstSelectedOption() -> dropdown menudeki secili secenegi verir.
+    6-Cogu zaman sendKeys. ile direkt sectirip kaydedebiliriz ----test03
+
 
     */
 WebDriver driver;
@@ -44,9 +43,10 @@ WebDriver driver;
         driver.get("https://testcenter.techproeducation.com/index.php?page=dropdown ");
     }
 
-    @AfterEach @Disabled
+    @AfterEach
     void tearDown() {
-        driver.quit();
+
+         driver.quit();
     }
 
     @Test
@@ -94,8 +94,31 @@ WebDriver driver;
     void test02a() {
         List <WebElement> statesList=
                 driver.findElements(By.xpath("//select[@id='state']/option"));
-
         statesList.forEach(t-> System.out.println(t.getText()));
+    }
+
+    @Test
+    void test03() {
+         //         a. Yil,ay,gün dropdown menu'leri locate ediniz
+        WebElement year=driver.findElement(By.id("year"));
+        WebElement month=driver.findElement(By.id("month"));
+        WebElement day=driver.findElement(By.id("day"));
+
+        year.sendKeys("2021");
+        month.sendKeys("May");
+        day.sendKeys("15");
+    }
+
+    @Test
+    void test04() {
+        //     3.Method:
+        //         a. State dropdownindaki varsayilan secili secenegin 'Select a State' oldugunu verify edelim
+       WebElement states=driver.findElement(By.cssSelector("#state"));
+       Select select =new Select(states);
+       String actualOption=select.getFirstSelectedOption().getText();
+       String expectedOption="Select a State";
+       Assertions.assertEquals(expectedOption,actualOption);
+
     }
 
     // Given kullanici https://testcenter.techproeducation.com/index.php?page=dropdown sayfasindayken
